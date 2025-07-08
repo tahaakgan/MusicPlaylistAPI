@@ -1,0 +1,68 @@
+@MusicPlaylistApi_HostAddress = http://localhost:5010
+
+###
+GET http://localhost:5010/songs
+Content-Type: application/json
+
+###
+POST http://localhost:5010/songs
+Content-Type: application/json
+
+{
+  "title": "Taha'nin Şarkisi",
+  "artist": "Taha Akgan",
+  "genre": "Rap",
+  "duration": "00:03:30"
+}
+
+###
+PUT http://localhost:5010/songs/1
+Content-Type: application/json
+
+{
+  "title": "Güncellenmiş Şarki",
+  "artist": "Taha Update",
+  "genre": "Jazz",
+  "duration": "00:04:00"
+}
+
+### Yeni Playlist Oluştur
+POST http://localhost:5010/playlists
+Content-Type: application/json
+
+{
+  "Name": "Taha'nin Favorileri"
+}
+
+### Şarkı 1
+POST http://localhost:5010/songs
+Content-Type: application/json
+
+{
+  "title": "Uyan",
+  "artist": "Mor ve Ötesi",
+  "genre": "Rock",
+  "duration": "00:04:20"
+}
+
+### Şarkı 2
+POST http://localhost:5010/songs
+Content-Type: application/json
+
+{
+  "title": "Güneşi Beklerken",
+  "artist": "Teoman",
+  "genre": "Alternative",
+  "duration": "00:03:50"
+}
+
+### Şarkı 3
+POST http://localhost:5010/songs
+Content-Type: application/json
+
+{
+  "title": "Yol",
+  "artist": "Tarkan",
+  "genre": "Pop",
+  "duration": "00:03:35"
+}
