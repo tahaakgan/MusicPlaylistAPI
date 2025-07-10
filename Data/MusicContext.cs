@@ -11,4 +11,6 @@ public class MusicContext : DbContext
     public DbSet<Song> Songs => Set<Song>();
 
     public DbSet<Playlist> Playlists => Set<Playlist>();
+
+    public DbSet<User> Users => Set<User>();
 }

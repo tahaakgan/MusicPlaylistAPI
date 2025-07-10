@@ -19,11 +19,49 @@ public class SongsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Song>>> GetSongs()
+    public async Task<ActionResult<IEnumerable<Song>>> GetSongs([FromQuery] SongQueryParameters query)
     {
+        IQueryable<Song> songsQuery = _context.Songs;
+        //Sorting
+        songsQuery = query.SortBy?.ToLower() switch
+        {
+            "title" => query.IsAsc ? songsQuery.OrderBy(s => s.Title) : songsQuery.OrderByDescending(s => s.Title),
+            "artist" => query.IsAsc ? songsQuery.OrderBy(s => s.Artist) : songsQuery.OrderByDescending(s => s.Artist),
+            "genre" => query.IsAsc ? songsQuery.OrderBy(s => s.Genre) : songsQuery.OrderByDescending(s => s.Genre),
+            _ => songsQuery
+        };
+
+        //Paging
+
+        songsQuery = songsQuery
+                    .Skip((query.Page - 1) * query.PageSize)
+                    .Take(query.PageSize);
+
+
         var songs = await _context.Songs.ToListAsync();
         return Ok(songs);
     }
+
+    /*[HttpGet]
+    public async Task<ActionResult<IEnumerable<Song>>> FilteredSongs([FromQuery] SongQueryParameters query)
+    {
+        IQueryable<Song> songsQuery = _context.Songs;
+
+        //Filtreleme 
+        if (!string.IsNullOrWhiteSpace(query.Genre))
+            songsQuery = songsQuery.Where(s => s.Genre.ToLower().Contains(query.Genre.ToLower()));
+
+        if(!string.IsNullOrWhiteSpace(query.Artist))
+            songsQuery = songsQuery.Where(s => s.Artist.ToLower().Contains(query.Genre.ToLower()));
+
+
+
+
+
+    }*/
+
+
+    
 
     [HttpGet("{id}")]
 
