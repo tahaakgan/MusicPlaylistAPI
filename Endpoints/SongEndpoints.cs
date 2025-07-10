@@ -7,7 +7,7 @@ using MusicPlaylistApi.Models;
 using MiniValidation;
 
 namespace MusicPlaylistApi.Endpoints;
-
+/*
 public static class SongsEndpoints
 {
     public static void MapSongsEndpoints(this WebApplication app)
@@ -107,4 +107,4 @@ public static class SongsEndpoints
         });
 
     }
-}
+}*/

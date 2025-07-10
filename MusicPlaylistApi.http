@@ -1,7 +1,7 @@
 @MusicPlaylistApi_HostAddress = http://localhost:5010
 
 ###
-GET http://localhost:5010/songs
+GET http://localhost:5010/api/songs
 Content-Type: application/json
 
 ###
@@ -65,4 +65,20 @@ Content-Type: application/json
   "artist": "Tarkan",
   "genre": "Pop",
   "duration": "00:03:35"
+}
+
+### Playlist 2
+POST http://localhost:5010/playlists
+Content-Type: application/json
+
+{
+  "name": "Sabah Enerjisi"
+}
+
+### Playlist 3
+POST http://localhost:5010/playlists
+Content-Type: application/json
+
+{
+  "name": "Gece Yolculuğu"
 }

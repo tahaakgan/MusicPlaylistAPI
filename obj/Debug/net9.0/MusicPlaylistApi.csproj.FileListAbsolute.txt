@@ -152,3 +152,4 @@ C:\Users\TA015534\Desktop\MusicPlaylistApi\MusicPlaylist\MusicPlaylistApi\obj\De
 C:\Users\TA015534\Desktop\MusicPlaylistApi\MusicPlaylist\MusicPlaylistApi\obj\Debug\net9.0\MusicPlaylistApi.genruntimeconfig.cache
 C:\Users\TA015534\Desktop\MusicPlaylistApi\MusicPlaylist\MusicPlaylistApi\obj\Debug\net9.0\ref\MusicPlaylistApi.dll
 C:\Users\TA015534\Desktop\MusicPlaylistApi\MusicPlaylist\MusicPlaylistApi\bin\Debug\net9.0\MiniValidation.dll
+C:\Users\TA015534\Desktop\MusicPlaylistApi\MusicPlaylist\MusicPlaylistApi\obj\Debug\net9.0\MusicPlaylistApi.sourcelink.json

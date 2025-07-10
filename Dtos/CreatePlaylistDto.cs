@@ -7,5 +7,5 @@ public record class CreatePlaylistDto
     [Required]
     [StringLength(50, MinimumLength = 1)]
     public string Name { get; set; } = default!;
-    
+    public List<int> SongIds { get; set; } = new();
 }
