@@ -53,4 +53,42 @@ public class PlaylistController : ControllerBase
 
         return CreatedAtAction(nameof(GetPlaylist), new { id = playlist.Id }, playlist);
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<Playlist>> UpdatedPlaylist(int id, [FromBody] CreatePlaylistDto dto)
+    {
+        var playlist = await _context.Playlists
+                        .Include(p => p.Songs)
+                        .FirstOrDefaultAsync(p => p.Id == id);
+
+
+        if (playlist == null)
+            return NotFound();
+
+        playlist.Name = dto.Name;
+
+        var NewSongs = await _context.Songs
+                        .Where(s => dto.SongIds.Contains(s.Id))
+                        .ToListAsync();
+        playlist.Songs = NewSongs;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(playlist);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeletedPlaylist(int id)
+    {
+        var playlist = await _context.Playlists.FindAsync(id);
+
+        if (playlist == null)
+            return NotFound();
+
+        _context.Remove(playlist);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+
+    }
 }
